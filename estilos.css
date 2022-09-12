@@ -1,6 +1,6 @@
 :root {
 	--marron: #ad7744e1;
-	--verde: rgb(55, 146, 75);
+	--verde: rgb(68, 143, 84);
 	--naranja: #d47d2c;
 	--gris: #808080;
 	--blanco: white;
@@ -72,7 +72,7 @@ form input[type="submit"] {
 	border-style: initial;
 	 font-size: 2em; 
 	border-radius: 5%;
-	margin-bottom: 0.2em;
+	margin-bottom: 0.15em;
 	cursor: pointer;
 }
 
