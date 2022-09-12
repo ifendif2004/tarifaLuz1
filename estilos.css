@@ -42,14 +42,17 @@ form {
 	/* color: var(--gris); */
 	margin: 0 auto;
 }
-
+.datosusuario{
+	display: flex;
+	margin-bottom: 0.2em;
+}
 form #sellimit {
 	width: 200px;
 	cursor: pointer;
 	background-color: var(--azulverde);
 	border-style: initial;
-	margin-bottom: 0.1em;
-	font-size: 1.5em;
+	margin-right: 0.5em;
+	/* font-size: 1.5em; */
 }
 
 form input[type="date"] {
@@ -57,8 +60,8 @@ form input[type="date"] {
 	background-color: var(--azulverde);
 	border-style: none;
 	cursor: pointer;
-	margin-bottom: 0.5em;
-	font-size: 1.5em;
+	/* margin-bottom: 0.5em;
+	font-size: 1.5em; */
 }
 
 form input[type="date"]:focus {
@@ -66,12 +69,12 @@ form input[type="date"]:focus {
 }
 
 form input[type="submit"] {
-	width: 200px;
+	width: 400px;
 	background-color: var(--azul);
 	color: var(--blanco);
 	border-style: initial;
-	font-size: 2em;
-	border-radius: 10%;
+	/* font-size: 2em; */
+	border-radius: 5%;
 	margin-bottom: 0.3em;
 }
 
