@@ -1,12 +1,12 @@
 :root {
 	--marron: #ad7744e1;
-	--verde: rgb(27, 143, 52);
-	--naranja: #d3751e;
+	--verde: rgb(55, 146, 75);
+	--naranja: #d47d2c;
 	--gris: #808080;
 	--blanco: white;
 	--amarillo: rgb(230, 240, 96);
 	--rojo: #800000;
-	--azul: #3b3be4;
+	--azul: #52aeeb;
 	--negro: rgb(0, 0, 0);
 	--azulverde: rgb(89, 238, 176);
 }
@@ -68,20 +68,13 @@ form input[type="date"]:focus {
 form input[type="submit"] {
 	width: 350px;
 	background-color: var(--azul);
-	color: var(--blanco);
+	color: var(--negro);
 	border-style: initial;
-	/* font-size: 2em; */
+	 font-size: 2em; 
 	border-radius: 5%;
-	margin-bottom: 0.3em;
+	margin-bottom: 0.2em;
 	cursor: pointer;
 }
-
-/* form input[type="submit"]:hover {
-	cursor: pointer;
-	background-color: var(--verde);
-	color: var(--negro); 
-} */
-
 
 .cabecerapreciohora {
 	background-color: var(--verde);
