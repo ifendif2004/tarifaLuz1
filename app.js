@@ -11,7 +11,6 @@ geolimit.addEventListener("click", (event) => {
 	lista.innerHTML = '';
 });
 dateControl.addEventListener("click", (event) => {
-	event.preventDefault();
 	lista.innerHTML = '';
 });
 
