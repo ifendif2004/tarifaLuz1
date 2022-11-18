@@ -29,7 +29,9 @@ let med = 0
 let cuarto = 0
 resultadocalculo.classList.add("ocultar")
 resultadocalculo.classList.remove("mostrar")
-activarCalcular(precios)
+// buscar.classList.add("active")
+// calcular.classList.remove("active")
+activarConsultar()
 
 const fecha = new Date();
 dateControl.value = fecha.toJSON().slice(0, 10);
@@ -192,27 +194,31 @@ function colores (valor, nivel1, nivel2){
 
 // ---------- pestañas --------------
 buscar.addEventListener("click", (evt) => {
-	activarCalcular()
+	activarConsultar()
 })
 
 calcular.addEventListener("click", (evt) => {
 	if (todoPrecios.length < 1){
 		alert ("Consulta antes los precios")
+		activarConsultar()
 		return
 	} 
-	activarConsultar()
+	activarCalcular()
 })
 
 function activarCalcular() {
-	contenidocalcular.style.display = "none"
-	calcular.className = calcular.className.replace(" active", "")
-	contenidobuscar.style.display = "block"
-	buscar.className += " active"
+	calcular.classList.add("active")
+	buscar.classList.remove("active")
+
+
+	contenidocalcular.style.display = "block"
+	contenidobuscar.style.display = "none"
 }
 
 function activarConsultar(){
-	contenidobuscar.style.display = "none"
-	buscar.className = buscar.className.replace(" active", "")
-	contenidocalcular.style.display = "block"
-	calcular.className += " active"
+	buscar.classList.add("active")
+	calcular.classList.remove("active")
+
+	contenidobuscar.style.display = "block"
+	contenidocalcular.style.display = "none"
 }
