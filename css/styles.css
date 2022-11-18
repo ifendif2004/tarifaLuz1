@@ -4,10 +4,11 @@
 	--letra: #157bbe;
 	--azul: #81adca;
 	--azulverde: rgb(135, 215, 221);
-	--negro: rgb(0, 0, 0);
+	--negro: black;
 	--verde: rgb(7, 104, 28);
 	--naranja: #75563a;
 	--rojo: #800000;
+	--blanco: white;
 }
 
 * {
@@ -186,18 +187,17 @@ form #sellimit {
 	}
 }
 
-/* Pestaña de calculo */
+/*--------- Pestaña de calculo -----------*/
 
 #contenido-calcular{
 	background-color: var(--fondo);
 	text-align: center;
-	padding : 5px 0;
 }
 #contenido-calcular .cabecera{
 	background-color: var(--fondo);
 }
 #resultado-calculo{
-	background-color: rgb(209, 234, 241);
+	background-color: var(--fondo);
 }
 #resultado-energia {
 	display: flex;
@@ -211,17 +211,21 @@ form #sellimit {
 }
 
 #calcular-kwh, #input-kwh{
-	background-color: #157bbe;
-	color: #f1f1f1;
+	background-color: var(--azul);
+	color: var(--negro);
 	padding: 5px;
-	font-size: calc(1vw + 1vh + 0.5vmin);
+	font-size: calc(1vw + 1.5vh + 0.5vmin);
 	font-weight: bolder;
 
 }
 
+#literal-euros-hora{
+	font-size: calc(1vw + 2vh + 0.5vmin);
+}
 .eurohora{
 	padding: 3px;
 	margin-top: 2px;
+	font-size: calc(1vw + 2vh + 0.5vmin);
 }
 
 .ocultar{
@@ -251,21 +255,18 @@ form #sellimit {
 	padding: 5px 30px;
 	transition: 0.3s;
 	font-size: 17px;
-	border-top-left-radius: 10px ;
-	border-top-right-radius: 10px ;
-
-
+	border-top-left-radius: 20px ;
+	border-top-right-radius: 20px ;
   }
   
   /* Change background color of buttons on hover */
   .tab button:hover {
-	background-color: rgb(242, 204, 127);
+	background-color: var(--azulverde);
   }
   
   /* Create an active/current tablink class */
   .tab button.active {
 	background-color: var(--fondo);
-	/* border: 2px solid bisque; */
   }
   
   /* Style the tab content */

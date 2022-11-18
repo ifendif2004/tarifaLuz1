@@ -16,7 +16,7 @@ const resultadocalculo = document.getElementById('resultado-calculo')
 
 
 // -----------Registrar el Service Worker------------------
-let swLocation = "./swtarifaluz.js";
+let swLocation = "./swtarifaluz1.js";
 if (navigator.serviceWorker) {
 	navigator.serviceWorker.register(swLocation);
 } else {
@@ -25,6 +25,8 @@ if (navigator.serviceWorker) {
 
 let todoPrecios = [];
 let precios = [];
+let med = 0
+let cuarto = 0
 resultadocalculo.classList.add("ocultar")
 resultadocalculo.classList.remove("mostrar")
 activarCalcular(precios)
@@ -72,30 +74,22 @@ const cargarPrecios = async (startdate, enddate) => {
 			});
 			let min = Math.min(...precios);
 			let max = Math.max(...precios);
-			let med = precios.reduce((a, b) => a + parseFloat(b, 10), 0)
+			med = precios.reduce((a, b) => a + parseFloat(b, 10), 0)
 			med = med / 24;
 			med = (Math.round(med * 1000000) / 1000000).toPrecision(5)
-			let cuarto = (+med + min) / 2;
+			cuarto = (+med + min) / 2;
 			let minimoMaximo = `
 			<div id="minimo" class="minimo"><p>MÍNIMO</p> <p>${min} €/kwh</p></div>
 			<div id="medio" class="medio"><p>MEDIA</p> <p>${med} €/kwh</p></div>
 			<div id="maximo" class="maximo"><p>MÁXIMO</p> <p>${max} €/kwh</p></div>`;
 			maxmin.innerHTML = minimoMaximo;
 			let preciosHora = '';
-			let colorhora = ''
+			// let colorhora = ''
 			let horanext = ''
 			datos.included[0].attributes.values.forEach(hora => {
 				let valor = (hora.value / 1000).toFixed(5);
-				if (valor < cuarto) {
-					colorhora = 'minimo'
-					imagen = './img/cuadradoVerde.png'
-				} else if (valor < med) {
-					colorhora = 'medio'
-					imagen = './img/cuadradoNaranja.png'
-				} else {
-					colorhora = 'maximo'
-					imagen = './img/puntorojo.png'
-				}
+				imagenColor = colores(valor, cuarto, med)
+
 				horanext = +hora.datetime.slice(11, 13) + 1
 				if ((String(horanext).length) == 1) {
 					horanext = '0' + horanext
@@ -103,8 +97,8 @@ const cargarPrecios = async (startdate, enddate) => {
 
 				preciosHora += `
 				<div class="itempreciohora">
-					<img src="${imagen}">
-					<span1> ${hora.datetime.slice(11, 13)}h-${horanext}h: <span class="${colorhora}">  ${(hora.value / 1000).toFixed(5)} €/kWh </span></span1>
+					<img src="${imagenColor.imagen}">
+					<span1> ${hora.datetime.slice(11, 13)}h-${horanext}h: <span class="${imagenColor.claseColor}">  ${(hora.value / 1000).toFixed(5)} €/kWh </span></span1>
 				</div>`;
 			});
 
@@ -148,34 +142,25 @@ btncalcularkwh.addEventListener("click", (evt) => {
 	resultadocalculo.classList.remove("ocultar")
 	let resultado = ""
 	let preciohora = 0
-	// literaleuroshora.innerText = "Precio en Euros por cada hora"
-	precios.forEach((precio) => {
-		preciohora = parseFloat(precio) * parseFloat(inputkwh.value) / 1000
-		// console.log("precio ", parseFloat(precio) , " resultado: ", parseFloat(precio) * parseFloat(inputkwh.value) )
-		resultado += `
-		<div class="eurohora">
-		<span class="dd">  ${(preciohora).toFixed(5)} € </span>
-		</div>`;
-	})
-	resultadoenergia.innerHTML = resultado
-
-	resultado = ""
-	let imagenColor = {"claseColor": '', "imagen": '' }
+	// let imagenColor = {"claseColor": '', "imagen": '' }
 	let horanext = ""
 	if ((String(horanext).length) == 1) {
 		horanext = '0' + horanext
 	}
+	let valor = 0
 	todoPrecios.included[0].attributes.values.forEach(precio => {
 		horanext = +precio.datetime.slice(11, 13) + 1
+		valor = (precio.value / 1000).toFixed(5);
 		preciohora = parseFloat(precio.value / 1000) * parseFloat(inputkwh.value) / 1000
 		if ((String(horanext).length) == 1) {
 			horanext = '0' + horanext
 		}
-		imagenColor = colores(preciohora.toFixed(5), 0.05, 0.2)
+		imagenColor = colores(valor, cuarto, med)
+		// imagenColor = colores(preciohora.toFixed(5), cuarto, med)
 		resultado += `
 		<div class="eurohora">
-		<img src="${colorImagen.imagen}">&nbsp;&nbsp;
-		<span1> ${precio.datetime.slice(11, 13)}h-${horanext}h:&nbsp;<span class="${colorImagen.claseColor}">  ${preciohora.toFixed(5)} € </span></span1>
+		<img src="${imagenColor.imagen}">&nbsp;&nbsp;
+		<span1> ${precio.datetime.slice(11, 13)}h-${horanext}h:&nbsp;<span class="${imagenColor.claseColor}">  ${preciohora.toFixed(5)} € </span></span1>
 		</div>`;
 
 	});

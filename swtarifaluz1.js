@@ -1,4 +1,4 @@
-const STATIC_CACHE = "static-kwh";
+const STATIC_CACHE = "static-kwh1";
 
 const APP_SHELL = [
   "./",
