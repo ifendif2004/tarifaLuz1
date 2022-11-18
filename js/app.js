@@ -38,10 +38,16 @@ geolimit.addEventListener("click", (event) => {
 	event.preventDefault();
 	lista.innerHTML = '';
 	maxmin.innerHTML = '';
+	resultadocalculo.classList.add("ocultar")
+	resultadocalculo.classList.remove("mostrar")
+	todoPrecios = []
 });
 dateControl.addEventListener("click", (event) => {
 	lista.innerHTML = '';
 	maxmin.innerHTML = '';
+	resultadocalculo.classList.add("ocultar")
+	resultadocalculo.classList.remove("mostrar")
+	todoPrecios = []
 });
 
 btnConsultar.addEventListener("click", (event) => {
@@ -132,7 +138,7 @@ function mostrarLoading() {
 	document.getElementById("loading").style.display = "block";
 }
 
-// ---------- calcular --------------
+// -------------------- calcular -----------------------------//
 inputkwh.addEventListener("click", (evt) => {
 	resultadocalculo.classList.add("ocultar")
 	resultadocalculo.classList.remove("mostrar")
@@ -186,24 +192,27 @@ function colores (valor, nivel1, nivel2){
 
 // ---------- pestañas --------------
 buscar.addEventListener("click", (evt) => {
-	activarCalcular(precios)
+	activarCalcular()
 })
 
 calcular.addEventListener("click", (evt) => {
-	if (precios.length < 1){
+	if (todoPrecios.length < 1){
 		alert ("Consulta antes los precios")
 		return
 	} 
-
-	contenidobuscar.style.display = "none"
-	buscar.className = buscar.className.replace(" active", "")
-	contenidocalcular.style.display = "block"
-	calcular.className += " active"
+	activarConsultar()
 })
 
-function activarCalcular(precios) {
+function activarCalcular() {
 	contenidocalcular.style.display = "none"
 	calcular.className = calcular.className.replace(" active", "")
 	contenidobuscar.style.display = "block"
 	buscar.className += " active"
+}
+
+function activarConsultar(){
+	contenidobuscar.style.display = "none"
+	buscar.className = buscar.className.replace(" active", "")
+	contenidocalcular.style.display = "block"
+	calcular.className += " active"
 }
