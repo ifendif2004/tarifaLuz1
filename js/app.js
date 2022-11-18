@@ -190,7 +190,10 @@ buscar.addEventListener("click", (evt) => {
 })
 
 calcular.addEventListener("click", (evt) => {
-	if (precios.length < 1) return
+	if (precios.length < 1){
+		alert ("Consulta antes los precios")
+		return
+	} 
 
 	contenidobuscar.style.display = "none"
 	buscar.className = buscar.className.replace(" active", "")
