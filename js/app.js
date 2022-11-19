@@ -1,3 +1,4 @@
+const cabeceracalcular = document.getElementById('cabeceracalcular')
 const dateControl = document.querySelector('input[type="date"]')
 const geolimit = document.getElementById('sellimit')
 const lista = document.getElementById('lista')
@@ -11,6 +12,7 @@ const btncalcularkwh = document.getElementById('calcular-kwh')
 const resultadoenergia = document.getElementById('resultado-energia')
 // const literaleuroshora = document.getElementById('literal-euros-hora')
 const resultadocalculo = document.getElementById('resultado-calculo')
+const msgerror = document.getElementById('msgerror')
 
 
 
@@ -146,6 +148,13 @@ inputkwh.addEventListener("click", (evt) => {
 	resultadocalculo.classList.remove("mostrar")
 })
 btncalcularkwh.addEventListener("click", (evt) => {
+	if (inputkwh.value === '') {
+		inputkwh.style.backgroundColor = '#FF00FF'
+		setTimeout(() => {
+			inputkwh.style.backgroundColor = '#81adca'
+		},500);
+		return
+	}
 	resultadocalculo.classList.add("mostrar")
 	resultadocalculo.classList.remove("ocultar")
 	let resultado = ""
@@ -199,7 +208,16 @@ buscar.addEventListener("click", (evt) => {
 
 calcular.addEventListener("click", (evt) => {
 	if (todoPrecios.length < 1){
-		alert ("Consulta antes los precios")
+		cabeceracalcular.classList.add('ocultar')
+		cabeceracalcular.classList.remove('mostrar')
+		msgerror.classList.add('mostrar')
+		msgerror.classList.remove('ocultar')
+		setTimeout(() => {
+			msgerror.classList.add('ocultar')
+			msgerror.classList.remove('mostrar')
+			cabeceracalcular.classList.add('mostrar')
+			cabeceracalcular.classList.remove('ocultar')
+			},1000);
 		activarConsultar()
 		return
 	} 

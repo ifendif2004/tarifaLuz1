@@ -64,7 +64,7 @@ form #sellimit {
 	font-size: calc(1.5vw + 1vh + 0.5vmin);
 }
 
-#btnConsultar {
+#btnConsultar, #msgerror {
 	width: 100%;
 	background-color: var(--azul);
 	color: var(--negro);
@@ -73,6 +73,7 @@ form #sellimit {
 	font-weight: bolder;
 	border-radius: 2em / 5em;
 	margin-bottom: 0.3em;
+	text-align: center;
 	cursor: pointer;
 }
 
