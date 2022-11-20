@@ -29,6 +29,7 @@ body {
 	width: 99%;
 }
 
+.tab button, 
 #literal-euros-hora,
 h3,
 h4 {
@@ -215,7 +216,7 @@ form #sellimit {
 	background-color: var(--azul);
 	color: var(--negro);
 	padding: 5px;
-	font-size: calc(1vw + 1.5vh + 0.5vmin);
+	font-size: calc(0.5vw + 1.5vh + 0.5vmin);
 	font-weight: bolder;
 
 }
@@ -249,13 +250,14 @@ form #sellimit {
   /* Style the buttons inside the tab */
   .tab button {
 	background-color:rgb(243, 233, 233) ;
+	color: var(--negro);
 	float: left;
 	border: none; 
 	outline: none;
 	cursor: pointer;
 	padding: 5px 30px;
 	transition: 0.3s;
-	font-size: 17px;
+	font-size: 25px;
 	border-top-left-radius: 20px ;
 	border-top-right-radius: 20px ;
   }
@@ -276,7 +278,7 @@ form #sellimit {
 	/* padding: 6px 12px; */
 	border-top: none;
 	/* border: 2px solid rgb(10, 9, 10); */
-
+	
 
   }
 

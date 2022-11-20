@@ -149,10 +149,11 @@ inputkwh.addEventListener("click", (evt) => {
 })
 btncalcularkwh.addEventListener("click", (evt) => {
 	if (inputkwh.value === '') {
-		inputkwh.style.backgroundColor = '#FF00FF'
+		inputkwh.style.backgroundColor = '#e4dec5e1'
 		setTimeout(() => {
 			inputkwh.style.backgroundColor = '#81adca'
-		},500);
+			// inputkwh.style.animation = "blink 2s linear infinite";
+		}, 500);
 		return
 	}
 	resultadocalculo.classList.add("mostrar")
@@ -207,20 +208,14 @@ buscar.addEventListener("click", (evt) => {
 })
 
 calcular.addEventListener("click", (evt) => {
-	if (todoPrecios.length < 1){
-		cabeceracalcular.classList.add('ocultar')
-		cabeceracalcular.classList.remove('mostrar')
-		msgerror.classList.add('mostrar')
-		msgerror.classList.remove('ocultar')
+	if (todoPrecios.length < 1) {
+		btnConsultar.style.backgroundColor = '#e4dec5e1'
 		setTimeout(() => {
-			msgerror.classList.add('ocultar')
-			msgerror.classList.remove('mostrar')
-			cabeceracalcular.classList.add('mostrar')
-			cabeceracalcular.classList.remove('ocultar')
-			},1000);
+			btnConsultar.style.backgroundColor = '#81adca'
+		}, 1000);
 		activarConsultar()
 		return
-	} 
+	}
 	activarCalcular()
 })
 
@@ -233,7 +228,7 @@ function activarCalcular() {
 	contenidobuscar.style.display = "none"
 }
 
-function activarConsultar(){
+function activarConsultar() {
 	buscar.classList.add("active")
 	calcular.classList.remove("active")
 
